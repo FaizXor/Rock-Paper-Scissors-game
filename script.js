@@ -8,3 +8,10 @@ function getComputerChoice () {
 
 console.log(getComputerChoice());
 
+function getHumanChoice () {
+    let userInput = window.prompt("Type your move")
+
+    return userInput
+}
+
+console.log(getHumanChoice());
