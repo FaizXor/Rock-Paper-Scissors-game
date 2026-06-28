@@ -8,34 +8,59 @@ function getComputerChoice () {
 
 
 
-function getHumanChoice () {
-    let userInput = window.prompt("Type your move")
+function getHumanChoice (roundNumber, humanScore, computerScore) {
+    let userInput = window.prompt(`Type your move
+Round:${roundNumber + 1}     Human Point:${humanScore}     Computer Point:${computerScore}`)
     let cleanInput = userInput.charAt(0).toUpperCase() + userInput.slice(1).toLowerCase();
 
     return cleanInput
 }
 
 
-let humanScore = 0
-let computerScore = 0
+function playGame() {
+    let humanScore = 0
+    let computerScore = 0
 
 function playRound(humanChoice, computerChoice){
     if (humanChoice === computerChoice) {
-        alert("hollu shi");
+        alert(`it is a tie!     Computer Choice: ${computerChoice}`); 
     } else if ((humanChoice === "Rock") && (computerChoice === "Scissors") ) {
-        alert("yay")
+        alert(`You won Yay!     Computer Choice: ${computerChoice}`);
+        humanScore++;
     } else if ((humanChoice === "Paper") && (computerChoice === "Rock")) {
-        alert("horray")
+        alert(`You won :) !     Computer Choice: ${computerChoice}`);
+        humanScore++;
     } else if ((humanChoice === "Scissors") && (computerChoice === "Paper")) {
-        alert("yeppy")
+        alert(`You won yippee!  Computer Choice: ${computerChoice}`)
+        humanScore++;
     }
 
     else {
-        alert("oh no!")
+        alert(`Computer Won :(  Computer Choice: ${computerChoice}`)
+        computerScore++;
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-playRound(humanSelection,computerSelection) 
+for (let i = 0; i < 5; i++ ){
+    const humanSelection = getHumanChoice(i , humanScore, computerScore);
+    const computerSelection = getComputerChoice();
+
+    playRound(humanSelection,computerSelection) 
+}
+
+let winnerPlayer = ""
+
+if (humanScore > computerScore){
+    winnerPlayer = "Human!"
+} else if (computerScore > humanScore) {
+    winnerPlayer = "Computer!"
+} else {
+    winnerPlayer = "Nobody its a tie game!"
+}
+
+alert(`The winner is ${winnerPlayer}`)
+
+}
+
+playGame();
