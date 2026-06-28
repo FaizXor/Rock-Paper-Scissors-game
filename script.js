@@ -6,12 +6,36 @@ function getComputerChoice () {
     return selectingMove[randomIndex]
 }
 
-console.log(getComputerChoice());
+
 
 function getHumanChoice () {
     let userInput = window.prompt("Type your move")
+    let cleanInput = userInput.charAt(0).toUpperCase() + userInput.slice(1).toLowerCase();
 
-    return userInput
+    return cleanInput
 }
 
-console.log(getHumanChoice());
+
+let humanScore = 0
+let computerScore = 0
+
+function playRound(humanChoice, computerChoice){
+    if (humanChoice === computerChoice) {
+        alert("hollu shi");
+    } else if ((humanChoice === "Rock") && (computerChoice === "Scissors") ) {
+        alert("yay")
+    } else if ((humanChoice === "Paper") && (computerChoice === "Rock")) {
+        alert("horray")
+    } else if ((humanChoice === "Scissors") && (computerChoice === "Paper")) {
+        alert("yeppy")
+    }
+
+    else {
+        alert("oh no!")
+    }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection,computerSelection) 
