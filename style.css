@@ -19,14 +19,14 @@ body {
     align-items: center;
     width: 100vw;   
     min-height: 100vh;
-    gap: 10px;
+
 }
 
 #ComputerSpace{
     display: flex;
     flex-direction: column;
     align-items: center;
-        flex-grow: 1;
+    flex-grow: 1;
     justify-content: flex-end;
 }
 
@@ -34,7 +34,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-grow: 1;
+    flex-grow: 0.3;
     justify-content: flex-end;
     width: 100%;
 }
@@ -50,3 +50,45 @@ body {
     z-index: 1;
 }
 
+#ComputerTable{
+    transform-origin: bottom;
+    transform: scale(3);
+}
+
+#ComputerPlayer{
+    transform-origin: bottom;
+    transform: scale(4);
+}
+
+#ComputerCardMove{
+    transform: scale(4);
+    z-index: 1;
+}
+
+#RockButton, #PaperButton, #ScissorsButton{
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+}
+
+#RockButton:active {
+    border-left: 2px solid transparent;
+}
+
+#PaperButton{
+    margin-left: 1px;
+}
+
+#PaperButton:active{
+    border-left: 1px solid transparent; 
+    border-right: 1px solid transparent;
+}
+
+#ScissorsButton{
+    margin-left: 1px;
+}
+
+#ScissorsButton:active{
+    border-right: 3px solid transparent;
+}

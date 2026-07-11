@@ -9,7 +9,7 @@
    </head>
 
    <body>
-    <script src="scripts.js" defer></script>
+    <script src="script.js" defer></script>
       <div id="mainContainer">
 
 
@@ -22,15 +22,21 @@
               <img src="assets/computerPlayer_card.png" alt="Computer Card Moves">  
              </div>  
 
-            <img src="assets/computerPlayer_tabel.png" alt="Computer Table">
+            <img id="ComputerTable" src="assets/computerPlayer_tabel.png" alt="Computer Table">
 
          </div>
 
          <div id="PlayerSpace">
             <div id="PlayerButtons">
-             <img src="assets/humanPlayer_buttonNormalRock.png" alt="Rock Button">
-             <img src="assets/humanPlayer_buttonNormalPaper.png" alt="Paper Button">
-             <img src="assets/humanPlayer_buttonNormalScissors.png" alt="Scissor Button">
+             <button id="RockButton" type="button">
+              <img id="RockButton" src="assets/humanPlayer_buttonNormalRock.png" onmouseover="this.src ='assets/humanPlayer_buttonHoveredRock.png'" onmousedown="this.src = 'assets/humanPlayer_buttonPressedRock.png'" onmouseup="this.src ='assets/humanPlayer_buttonHoveredRock.png'" onmouseout="this.src = 'assets/humanPlayer_buttonNormalRock.png'" alt="Rock Button">
+             </button> 
+             <button id="PaperButton" type="button">
+               <img id="PaperButton" src="assets/humanPlayer_buttonNormalPaper.png" onmouseover="this.src ='assets/humanPlayer_buttonHoveredPaper.png'" onmousedown="this.src = 'assets/humanPlayer_buttonPressedPaper.png'" onmouseup="this.src ='assets/humanPlayer_buttonHoveredPaper.png'" onmouseout="this.src = 'assets/humanPlayer_buttonNormalPaper.png'" alt="Paper Button">
+             </button> 
+             <button id="ScissorsButton" type="button">
+               <img id="ScissorsButton" src="assets/humanPlayer_buttonNormalScissors.png" onmouseover="this.src ='assets/humanPlayer_buttonHoveredScissors.png'" onmousedown="this.src = 'assets/humanPlayer_buttonPressedScissors.png'" onmouseup="this.src ='assets/humanPlayer_buttonHoveredScissors.png'" onmouseout="this.src = 'assets/humanPlayer_buttonNormalScissors.png'" alt="Scissor Button">
+             </button> 
             </div>
 
             <img id="PlayerTable" src="assets/mainplayer_Tabel.png" alt="Players Table">
