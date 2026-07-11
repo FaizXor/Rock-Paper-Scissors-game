@@ -1,6 +1,24 @@
 let scissorsChoice = document.getElementById('ScissorsButton')
 let rockChoice = document.getElementById('RockButton')
 let paperChoice = document.getElementById('PaperButton')
+let computerPlayer = document.getElementById('ComputerPlayerImg')
+
+let facePlayer = new SuperGif({
+    gif: computerPlayer,
+    auto_play: true,
+    loop_mode: false
+})
+
+facePlayer.load(() => {
+    console.log("Face animations parsed successfully.");
+});
+
+function triggerWinnerAnimation(){
+    facePlayer.set_src("assets/ComputerPlayerFace_winner.gif", () => {
+        facePlayer.move_to(0);
+        facePlayer.play();
+    })
+}
 
 const selectingMove = ["Scissors" , "Rock" ,"Paper"];
 
@@ -22,9 +40,7 @@ function getComputerChoice () {                                         //make a
 
 
 
-
-
-//function playGame() {
+function playGame() {
 //    let humanScore = 0                          //defining the human score and computer score and setting it to 0
 //    let computerScore = 0
 
@@ -68,6 +84,6 @@ function getComputerChoice () {                                         //make a
 
 //alert(`The winner is ${winnerPlayer}`) // making a popup to tell the user who is the winner 
 
-//}
+}
 
-//playGame();  
+playGame();  
