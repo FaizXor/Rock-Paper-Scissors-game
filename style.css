@@ -1,3 +1,17 @@
+.pixelify-sans-Medium {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.pixelify-sans-Bold {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
 *{
      cursor: url('assets/Hands_spriteNormalCursor.png'), auto;
      margin: 0;
@@ -92,3 +106,31 @@ body {
 #ScissorsButton:active{
     border-right: 3px solid transparent;
 }
+
+#RoundNum{
+    display: flex;
+    flex-grow: 0.3;
+    align-items: flex-end;
+    
+    width: 100vh;
+    justify-content: center;
+    gap: 15px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 50px;
+
+    animation: float 5s  steps(5) infinite;
+}
+
+@keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
