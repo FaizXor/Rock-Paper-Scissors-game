@@ -116,7 +116,7 @@ body {
     justify-content: center;
     gap: 15px;
     font-family: "Pixelify Sans", sans-serif;
-    font-size: 50px;
+    font-size: 70px;
 
     animation: float 5s  steps(5) infinite;
 }
@@ -134,3 +134,4 @@ body {
                 transform: translateY(0);
             }
         }
+

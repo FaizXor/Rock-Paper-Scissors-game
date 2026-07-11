@@ -1,21 +1,27 @@
+let scissorsChoice = document.getElementById('ScissorsButton')
+let rockChoice = document.getElementById('RockButton')
+let paperChoice = document.getElementById('PaperButton')
 
-//const selectingMove = ["Scissors" , "Rock" ,"Paper"];                   //defining a moves to the computer player 
-
-//function getComputerChoice () {                                         //make a computer randomly select the moves and saves it
-//    let randomIndex = Math.floor(Math.random() * selectingMove.length)
-//
-  //  return selectingMove[randomIndex]
-//}
+const selectingMove = ["Scissors" , "Rock" ,"Paper"];
 
 
+function getHumanChoice (selectItem) {      //adding a popup with variables (Round number, Human Score, Computer Score,) to let the Human types what his moves and saves it
+    let userInput = selectingMove[selectItem]
+    return userInput
+}
 
-//function getHumanChoice (roundNumber, humanScore, computerScore) {      //adding a popup with variables (Round number, Human Score, Computer Score,) to let the Human types what his moves and saves it
-//    let userInput = window.prompt(`Type your move
-//Round:${roundNumber + 1}     Human Point:${humanScore}     Computer Point:${computerScore}`)
-//    let cleanInput = userInput.charAt(0).toUpperCase() + userInput.slice(1).toLowerCase(); //changing the input text into a clean text Example :(roCk to Rock)
+scissorsChoice.addEventListener('click', () => getHumanChoice(0))
+rockChoice.addEventListener('click', () => getHumanChoice(1))
+paperChoice.addEventListener('click', () => getComputerChoice(2))
 
-//    return cleanInput
-//}
+function getComputerChoice () {                                         //make a computer randomly select the moves and saves it
+    let randomIndex = Math.floor(Math.random() * selectingMove.length)
+
+  return selectingMove[randomIndex]
+}
+
+
+
 
 
 //function playGame() {
