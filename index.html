@@ -3,9 +3,7 @@
 
    <head>
 
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+      <link href = "fonts/FE5Cent/stylesheet.css" rel = "stylesheet" type = "text/css" />
 
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +13,6 @@
 
    <body>
     <script src="script.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/libgif@0.0.3/libgif.min.js"></script>
       <div id="mainContainer">
 
          <div id="RoundNum">
@@ -24,8 +21,7 @@
          </div>
 
          <div id="ComputerSpace">
-            <div id="ComputerPlayer">
-             <img id="ComputerPlayerImg" src="assets/ComputerPlayerFace_winner.gif" rel:animated_src="assets/ComputerPlayerFace_winner.gif" alt="Computer Happy Face">
+            <div class="ComputerPlayer state-idle">
             </div>
 
              <div id="ComputerCardMove">
@@ -55,6 +51,8 @@
 
       </div>
       
+      <div id="blackOverlay">
+      </div>          
     
    </body>
 

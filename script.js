@@ -1,24 +1,20 @@
 let scissorsChoice = document.getElementById('ScissorsButton')
 let rockChoice = document.getElementById('RockButton')
 let paperChoice = document.getElementById('PaperButton')
-let computerPlayer = document.getElementById('ComputerPlayerImg')
+let computerPlayer = document.querySelector('.ComputerPlayer')
+let blackOverlay = document.getElementById('blackOverlay')
 
-let facePlayer = new SuperGif({
-    gif: computerPlayer,
-    auto_play: true,
-    loop_mode: false
-})
-
-facePlayer.load(() => {
-    console.log("Face animations parsed successfully.");
-});
 
 function triggerWinnerAnimation(){
-    facePlayer.set_src("assets/ComputerPlayerFace_winner.gif", () => {
-        facePlayer.move_to(0);
-        facePlayer.play();
-    })
+
+    computerPlayer.className = "ComputerPlayer state-winner";
+    console.log("Switched to sprite sheet win animation smoothly!");
 }
+
+blackOverlay.addEventListener('animationend', () => {
+    triggerWinnerAnimation();
+})
+
 
 const selectingMove = ["Scissors" , "Rock" ,"Paper"];
 
@@ -41,8 +37,8 @@ function getComputerChoice () {                                         //make a
 
 
 function playGame() {
-//    let humanScore = 0                          //defining the human score and computer score and setting it to 0
-//    let computerScore = 0
+    let humanScore = 0                          //defining the human score and computer score and setting it to 0
+    let computerScore = 0
 
 //function playRound(humanChoice, computerChoice){   //making comparison between the computer selection and the human input and add a point to the winner
 //    if (humanChoice === computerChoice) {
