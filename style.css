@@ -187,5 +187,24 @@ body {
 }
 
 @keyframes playThinking{
-    tp{background-position: 0px -256px;}
+    to{background-position: 0px -256px;}
+}
+
+.speechBubble{
+    width: 585px;
+    height: 180px;
+    background-image: none;
+    margin-left: 300px;
+    margin-bottom: 60px;
+    z-index: 1;
+    transform: scale(0.8);
+}
+
+.playingSpeechOne{
+    background-image: url(assets/pixel-speech-bubble_hello_i_am_computer_.png);
+    animation: playSpeechOne 3s steps(19) forwards ;
+}
+
+@keyframes playSpeechOne {
+    to{background-position: 0px -3420px;}
 }

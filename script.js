@@ -3,7 +3,31 @@ let rockChoice = document.getElementById('RockButton')
 let paperChoice = document.getElementById('PaperButton')
 let computerPlayer = document.querySelector('.ComputerPlayer')
 let blackOverlay = document.getElementById('blackOverlay')
+let speechBubble = document.querySelector('.speechBubble')
 
+function callback(mutationsList, observer) {
+  console.log("Mutations:", mutationsList);
+  console.log("Observer:", observer);
+}
+
+const mutationObserver = new MutationObserver(callback);
+
+mutationObserver.observe(document.querySelector('.ComputerPlayer'), { attributes: true });
+
+function triggerSpeechBubble(){
+    speechBubble.className = "speechBubble playingSpeechOne"
+    console.log("Switched to speech one successfully ")
+}
+
+function callback(mutationsList) {
+  mutationsList.forEach((mutation) => {
+    if (mutation.attributeName === "class") {
+        setTimeout(() => {
+            triggerSpeechBubble();
+        },1000);
+    }
+  });
+}
 
 function triggerWinnerAnimation(){
 
