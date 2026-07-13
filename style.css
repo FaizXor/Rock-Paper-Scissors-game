@@ -191,7 +191,6 @@ body {
 }
 
 .speechBubble{
-    width: 585px;
     height: 180px;
     background-image: none;
     margin-left: 300px;
@@ -202,9 +201,20 @@ body {
 
 .playingSpeechOne{
     background-image: url(assets/pixel-speech-bubble_hello_i_am_computer_.png);
+    width: 585px;
     animation: playSpeechOne 3s steps(19) forwards ;
 }
 
 @keyframes playSpeechOne {
     to{background-position: 0px -3420px;}
+}
+
+.playingSpeechTwo{
+    background-image: url(assets/pixel-speech-bubbleYour_compe.png);
+    width: 490px;
+    animation: playSpeechTwo 3s steps(15) forwards ;
+}
+
+@keyframes playSpeechTwo {
+    to{background-position: 0px -2700px;}
 }

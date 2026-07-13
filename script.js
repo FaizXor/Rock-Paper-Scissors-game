@@ -4,6 +4,10 @@ let paperChoice = document.getElementById('PaperButton')
 let computerPlayer = document.querySelector('.ComputerPlayer')
 let blackOverlay = document.getElementById('blackOverlay')
 let speechBubble = document.querySelector('.speechBubble')
+let mainContainer = document.getElementById('mainContainer')
+
+const bipSound = new Audio('assets/Sounds/Pickup46.wav')
+bipSound.volume = 1;
 
 function callback(mutationsList, observer) {
   console.log("Mutations:", mutationsList);
@@ -14,8 +18,35 @@ const mutationObserver = new MutationObserver(callback);
 
 mutationObserver.observe(document.querySelector('.ComputerPlayer'), { attributes: true });
 
-function triggerSpeechBubble(){
-    speechBubble.className = "speechBubble playingSpeechOne"
+function triggerSpeechBubble(speechClassName){
+    if (!speechBubble) return;
+
+    speechBubble.className = `speechBubble ${speechClassName}`
+
+    const computedStyle = window.getComputedStyle(speechBubble);
+    const durationInSecond = parseFloat(computedStyle.animationDuration);
+    const timingFunction = computedStyle.animationTimingFunction;
+    
+    let stepNumberText = timingFunction.replace("steps(","");
+    stepNumberText = stepNumberText.replace(")","");
+    const totalSteps = parseInt(stepNumberText, 10);
+
+    const durationInMs = durationInSecond * 1000;
+    const msPerStep = durationInMs / totalSteps
+
+    let bipCount = 0;
+    let maxBips = totalSteps;
+
+    let soundInterval = setInterval(() => {
+
+        bipSound.currentTime = 0 ;
+        bipSound.play()
+
+        bipCount++;
+        if (bipCount>= maxBips){
+            clearInterval(soundInterval)
+        }
+    }, msPerStep)
     console.log("Switched to speech one successfully ")
 }
 
@@ -23,7 +54,7 @@ function callback(mutationsList) {
   mutationsList.forEach((mutation) => {
     if (mutation.attributeName === "class") {
         setTimeout(() => {
-            triggerSpeechBubble();
+            triggerSpeechBubble(`playingSpeechOne`);
         },1000);
     }
   });
@@ -39,6 +70,11 @@ blackOverlay.addEventListener('animationend', () => {
     triggerWinnerAnimation();
 })
 
+speechBubble.addEventListener('animationend', () => {
+    setTimeout(() => {
+        triggerSpeechBubble("playingSpeechTwo");
+    },1000);
+})
 
 const selectingMove = ["Scissors" , "Rock" ,"Paper"];
 
