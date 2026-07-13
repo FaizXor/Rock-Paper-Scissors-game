@@ -191,9 +191,10 @@ body {
 }
 
 .speechBubble{
+    display: flex;
+    justify-content: flex-end;
     height: 180px;
     background-image: none;
-    margin-left: 300px;
     margin-bottom: 60px;
     z-index: 1;
     transform: scale(0.8);
@@ -202,6 +203,7 @@ body {
 .playingSpeechOne{
     background-image: url(assets/pixel-speech-bubble_hello_i_am_computer_.png);
     width: 585px;
+    margin-left: 300px;
     animation: playSpeechOne 3s steps(19) forwards ;
 }
 
@@ -212,9 +214,48 @@ body {
 .playingSpeechTwo{
     background-image: url(assets/pixel-speech-bubbleYour_compe.png);
     width: 490px;
-    animation: playSpeechTwo 3s steps(15) forwards ;
+    margin-left: 290px;
+    animation: playSpeechTwo 2s steps(15) forwards ;
 }
 
 @keyframes playSpeechTwo {
     to{background-position: 0px -2700px;}
+}
+
+.playingSpeechThree{
+    background-image: url(assets/pixel-speech-bubbleI_would_love_to_play_with_you.png);
+    width: 830px;
+    margin-left: 380px;
+    animation: playSpeechThree 4s steps(29) forwards;
+}
+
+@keyframes playSpeechThree {
+    to{background-position: 0px -5220px;}
+}
+
+.playingSpeechFour{
+    background-image: url(assets/pixel-speech-bubble_Would_you_want_to_start.png);
+    width: 945px;
+    margin-left: 405px;
+    animation: playSpeechFour 3s steps(25) forwards;
+}
+
+@keyframes playSpeechFour {
+    to{background-position: 0px -4500px;}
+}
+
+.startPlay{
+    width: 162px;
+    height: 56px;
+    background:none;
+    z-index: 1;
+    margin-right: 37px;
+    margin-top: 28px;
+    padding: 0;
+    border: none;
+    opacity: 0;
+}
+
+.startPlay:active{
+    transform: scale(0.9);
 }

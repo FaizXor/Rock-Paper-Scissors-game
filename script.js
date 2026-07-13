@@ -1,3 +1,5 @@
+document.body.style.overflow = 'hidden';
+
 let scissorsChoice = document.getElementById('ScissorsButton')
 let rockChoice = document.getElementById('RockButton')
 let paperChoice = document.getElementById('PaperButton')
@@ -21,6 +23,8 @@ mutationObserver.observe(document.querySelector('.ComputerPlayer'), { attributes
 function triggerSpeechBubble(speechClassName){
     if (!speechBubble) return;
 
+
+    speechBubble.className = "speechBubble";
     speechBubble.className = `speechBubble ${speechClassName}`
 
     const computedStyle = window.getComputedStyle(speechBubble);
@@ -66,15 +70,42 @@ function triggerWinnerAnimation(){
     console.log("Switched to sprite sheet win animation smoothly!");
 }
 
+function showStartButton(){
+    let startPlay = document.querySelector('.startPlay');
+    startPlay.removeAttribute("disabled");
+    startPlay.style.opacity = "1";
+}
+
 blackOverlay.addEventListener('animationend', () => {
     triggerWinnerAnimation();
 })
 
+
 speechBubble.addEventListener('animationend', () => {
-    setTimeout(() => {
-        triggerSpeechBubble("playingSpeechTwo");
-    },1000);
+    if (speechBubble.classList.contains('playingSpeechOne')) {
+        setTimeout(() => {
+            triggerSpeechBubble("playingSpeechTwo");
+        },1000);
+    }
+    
+    else if (speechBubble.classList.contains('playingSpeechTwo')) {
+        setTimeout(() => {
+            triggerSpeechBubble("playingSpeechThree");
+        },1000);
+    }
+    
+    else if (speechBubble.classList.contains('playingSpeechThree')) {
+        setTimeout(() => {
+            triggerSpeechBubble("playingSpeechFour");
+        },1000);
+    }
+
+    else if (speechBubble.classList.contains('playingSpeechFour')) {
+        showStartButton();
+        console.log("All computer speeches finished")
+    }
 })
+
 
 const selectingMove = ["Scissors" , "Rock" ,"Paper"];
 
