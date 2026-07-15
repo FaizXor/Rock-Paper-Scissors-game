@@ -14,6 +14,7 @@ let ComputerCard = document.querySelector('#ComputerCardMove')
 
 const bipSound = new Audio('assets/Sounds/Pickup46.wav')
 bipSound.volume = 1;
+let soundInterval = null;
 
 RoundText.textContent = "";
 roundNumChanger.textContent = "";
@@ -30,6 +31,13 @@ mutationObserver.observe(document.querySelector('.ComputerPlayer'), { attributes
 function triggerSpeechBubble(speechClassName){
     if (!speechBubble) return;
 
+    if (soundInterval) {
+        clearInterval(soundInterval);
+        soundInterval = null;
+    }  
+
+    speechBubble.style.animationDuration = '';
+    speechBubble.style.animationDelay = '';
 
     speechBubble.className = "speechBubble";
     speechBubble.className = `speechBubble ${speechClassName}`
@@ -48,7 +56,7 @@ function triggerSpeechBubble(speechClassName){
     let bipCount = 0;
     let maxBips = totalSteps;
 
-    let soundInterval = setInterval(() => {
+    soundInterval = setInterval(() => {
 
         bipSound.currentTime = 0 ;
         bipSound.play()
@@ -73,8 +81,9 @@ function callback(mutationsList) {
 
 
 function triggerComputerAnimation(animationClassName){
-
-    computerPlayer.className = `ComputerPlayer ${animationClassName}`;
+    computerPlayer.className = 'ComputerPlayer'; 
+    void computerPlayer.offsetWidth; 
+    computerPlayer.className = `ComputerPlayer ${animationClassName}`; 
     console.log("Switched to sprite sheet win animation smoothly!");
 }
 
@@ -88,6 +97,21 @@ blackOverlay.addEventListener('animationend', () => {
     triggerComputerAnimation("state-winner");
 })
 
+function skipSpeech(){
+    if (speechBubble.className !== "speechBubble") {
+        
+        if (soundInterval) {
+            clearInterval(soundInterval);
+        }
+        
+        speechBubble.style.animationDuration = "0s";
+        speechBubble.style.animationDelay = "0s";
+        
+        console.log("clicked skip");
+    }
+}
+
+document.addEventListener('click', skipSpeech)
 
 speechBubble.addEventListener('animationend', () => {
     if (speechBubble.classList.contains('playingSpeechOne')) {
@@ -110,6 +134,7 @@ speechBubble.addEventListener('animationend', () => {
 
     else if (speechBubble.classList.contains('playingSpeechFour')) {
         showStartButton();
+        document.removeEventListener('click',skipSpeech);
     }
 
 })
@@ -118,8 +143,13 @@ function setUpGame(){
     RoundText.textContent = "Round"
     roundNumChanger.textContent = `Num`
     speechBubble.className = "speechBubble playingSpeechStop";
-    observer.disconnect();
-    triggerComputerAnimation("state-idle");
+    mutationObserver.disconnect();
+    triggerComputerAnimation("state-winner-reverse")
+    if(computerPlayer.classList.contains('state-winner-reverse')){
+        setTimeout(() => {
+            triggerComputerAnimation("state-think")
+        },1000);
+    }
 }
 
 startPlay.addEventListener('click', () => {
@@ -127,8 +157,7 @@ startPlay.addEventListener('click', () => {
     startPlay.style.opacity = "0";
     startPlay.disabled = true;
 
-    triggerSpeechBubble("playingSpeechFive");
-
+    triggerSpeechBubble("playingSpeechFive");    
     speechBubble.addEventListener('animationend', () => {
 
 

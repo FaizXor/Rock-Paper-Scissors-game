@@ -171,6 +171,11 @@ body {
     animation: playWin 0.5s steps(4) forwards;
 }
 
+.state-winner-reverse{
+    background-image: url('assets/ComputerPlayerFaceWinner-Sheet.png') !important;
+    animation: playWin 0.5s steps(4,end) reverse;
+}
+
 .state-sad{
     background-image: url('assets/ComputerPlayerFaceSad-Sheet.png');
     animation: playSad 0.5s steps(4) forwards;
@@ -178,7 +183,7 @@ body {
 
 .state-think{
     background-image: url('assets/ComputerPlayerFaceThinking-Sheet.png');
-    animation: playThinking 0.5s steps(4) forwards;
+    animation: playThinking 0.8s steps(4) infinite;
 }
 
 
@@ -262,7 +267,7 @@ body {
 .playingSpeechFive{
     background-image: url(assets/pixel-speech-bubble_oh_great_so_lets_start-Sheet.png);
     width: 666px;
-    margin-left: 390px;
+    margin-left: 330px;
     animation: playSpeechFive 3s steps(23) forwards;
 }
 
