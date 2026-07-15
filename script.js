@@ -10,6 +10,7 @@ let mainContainer = document.getElementById('mainContainer')
 let startPlay = document.querySelector('.startPlay')
 let RoundText = document.querySelector('.Round')
 let roundNumChanger = document.querySelector('.Num')
+let ComputerCard = document.querySelector('#ComputerCardMove')
 
 const bipSound = new Audio('assets/Sounds/Pickup46.wav')
 bipSound.volume = 1;
@@ -70,25 +71,21 @@ function callback(mutationsList) {
   });
 }
 
-function triggerWinnerAnimation(){
 
-    computerPlayer.className = "ComputerPlayer state-winner";
+function triggerComputerAnimation(animationClassName){
+
+    computerPlayer.className = `ComputerPlayer ${animationClassName}`;
     console.log("Switched to sprite sheet win animation smoothly!");
 }
 
 function showStartButton(){
-    let startPlay = document.querySelector('.startPlay');
     startPlay.removeAttribute("disabled");
     startPlay.style.opacity = "1";
 }
 
 
-startPlay.addEventListener('onclick', () => {
-    
-})
-
 blackOverlay.addEventListener('animationend', () => {
-    triggerWinnerAnimation();
+    triggerComputerAnimation("state-winner");
 })
 
 
@@ -113,11 +110,43 @@ speechBubble.addEventListener('animationend', () => {
 
     else if (speechBubble.classList.contains('playingSpeechFour')) {
         showStartButton();
-        console.log("All computer speeches finished")
     }
+
 })
 
+function setUpGame(){
+    RoundText.textContent = "Round"
+    roundNumChanger.textContent = `Num`
+    speechBubble.className = "speechBubble playingSpeechStop";
+    observer.disconnect();
+    triggerComputerAnimation("state-idle");
+}
 
+startPlay.addEventListener('click', () => {
+    
+    startPlay.style.opacity = "0";
+    startPlay.disabled = true;
+
+    triggerSpeechBubble("playingSpeechFive");
+
+    speechBubble.addEventListener('animationend', () => {
+
+
+    if (speechBubble.classList.contains('playingSpeechFive')) {
+        setTimeout(() => {
+            triggerSpeechBubble("playingSpeechSix");
+        },1000);
+    }
+
+    else if (speechBubble.classList.contains('playingSpeechSix')) {
+        setTimeout(() => {
+            setUpGame();
+        },1000);
+        console.log("All computer speeches finished")
+    }
+
+    })
+})
 
 const selectingMove = ["Scissors" , "Rock" ,"Paper"];
 

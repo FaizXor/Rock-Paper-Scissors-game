@@ -64,6 +64,9 @@ body {
 #ComputerCardMove{
     transform: scale(4);
     z-index: 1;
+    position: relative;
+    bottom: 290px;
+    opacity: 0;
 }
 
 #RockButton, #PaperButton, #ScissorsButton{
@@ -98,6 +101,8 @@ body {
     display: flex;
     flex-grow: 0.3;
     align-items: flex-end;
+    position: fixed;
+    margin-bottom: 550px;
     
     width: 100vh;
     justify-content: center;
@@ -200,6 +205,16 @@ body {
     transform: scale(0.8);
 }
 
+.playingSpeechStop{
+        display: flex;
+    justify-content: flex-end;
+    height: 180px;
+    background-image: none;
+    margin-bottom: 60px;
+    z-index: 1;
+    transform: scale(0.8);
+}
+
 .playingSpeechOne{
     background-image: url(assets/pixel-speech-bubble_hello_i_am_computer_.png);
     width: 585px;
@@ -242,6 +257,28 @@ body {
 
 @keyframes playSpeechFour {
     to{background-position: 0px -4500px;}
+}
+
+.playingSpeechFive{
+    background-image: url(assets/pixel-speech-bubble_oh_great_so_lets_start-Sheet.png);
+    width: 666px;
+    margin-left: 390px;
+    animation: playSpeechFive 3s steps(23) forwards;
+}
+
+@keyframes playSpeechFive {
+    to{background-position: 0px -4140px;}
+}
+
+.playingSpeechSix{
+    background-image: url(assets/pixel-speech-bubble_I_will_crush_you-Sheet.png);
+    width: 531px;
+    margin-left: 300px ;
+    animation: playSpeechSix 3s steps(19) forwards;
+}
+
+@keyframes playSpeechSix {
+    to{background-position: 0px -3420px;}
 }
 
 .startPlay{
