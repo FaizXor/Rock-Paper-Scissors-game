@@ -83,6 +83,9 @@ function callback(mutationsList) {
   });
 }
 
+function buttonDisable(){
+    const buttonDisable = document.querySelector('#PlayerButtons button')
+}
 
 function triggerComputerAnimation(animationClassName){
     computerPlayer.className = 'ComputerPlayer'; 
@@ -144,10 +147,12 @@ speechBubble.addEventListener('animationend', () => {
 })
 
 function setUpGame(){
-    RoundNumContainer.classList.add("RoundNumIntro");
-
-    RoundText.textContent = "Round"
-    roundNumChanger.textContent = `Num`
+    setTimeout(() => {
+        RoundNumContainer.classList.add("RoundNumIntro");
+        RoundText.textContent = "Round"
+        roundNumChanger.textContent = `Num`
+    },500)
+    
 
     RoundNumContainer.addEventListener('animationend', function handleTheIntro(event){
         if (event.animationName === 'lineDown') {
@@ -215,9 +220,24 @@ function getHumanChoice (selectItem) {      //adding a popup with variables (Rou
     return userInput
 }
 
-scissorsChoice.addEventListener('click', () => getHumanChoice(0))
-rockChoice.addEventListener('click', () => getHumanChoice(1))
-paperChoice.addEventListener('click', () => getComputerChoice(2))
+scissorsChoice.addEventListener('click', () => {
+    getHumanChoice(0)
+    scissorsChoice.style.opacity = "1"
+    rockChoice.style.opacity = "0.5"
+    paperChoice.style.opacity = "0.5"
+})
+rockChoice.addEventListener('click', () => {
+    getHumanChoice(1)
+    rockChoice.style.opacity = "1"
+    scissorsChoice.style.opacity = "0.5"
+    paperChoice.style.opacity = "0.5"
+})
+paperChoice.addEventListener('click', () => {
+    getComputerChoice(2)
+    paperChoice.style.opacity = "1"
+    scissorsChoice.style.opacity = "0.5"
+    rockChoice.style.opacity = "0.5"
+})
 
 function getComputerChoice () {                                         //make a computer randomly select the moves and saves it
     let randomIndex = Math.floor(Math.random() * selectingMove.length)

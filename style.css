@@ -2,6 +2,7 @@
      cursor: url('assets/Hands_spriteNormalCursor.png'), auto;
      margin: 0;
      padding: 0;
+     user-select: none;
 }
 
 body {
@@ -12,14 +13,62 @@ body {
     image-rendering: crisp-edges; 
 }
 
-.mainContainer{
+.leftScreen{
+    position: fixed;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: auto;
+    transform: scale(3);
+}
+
+.leftScreenCables{
+    margin-left: 21px;
+    padding-top: 6px;
+    padding-left: 12px;
+}
+
+.leftScreenScreen{
+    position: fixed;
+    left: 0;
+    margin-left: 26px;
+    padding-left: 7px;
+}
+
+.rightScreen{
+    position: fixed;
+    transform: scale(3);
+    right: 0;
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+
+.rightScreenCables{
+    padding-right: 28px;
+    padding-bottom: 6px;
+}
+
+.rightScreenScreen{
+    position: fixed;
+    right: 0;
+    margin-right: 19px;
+}
+
+.centerPlace{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 100dvh;
+}
+
+.mainContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;   
     min-height: 100vh;
-
 }
 
 #ComputerSpace{
