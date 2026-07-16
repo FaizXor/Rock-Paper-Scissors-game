@@ -9,6 +9,7 @@ let speechBubble = document.querySelector('.speechBubble')
 let mainContainer = document.querySelector('.mainContainer')
 let startPlay = document.querySelector('.startPlay')
 let RoundText = document.querySelector('.Round')
+let RoundNumContainer = document.querySelector('.RoundNum')
 let roundNumChanger = document.querySelector('.Num')
 let ComputerCard = document.querySelector('#ComputerCardMove')
 
@@ -143,8 +144,19 @@ speechBubble.addEventListener('animationend', () => {
 })
 
 function setUpGame(){
+    RoundNumContainer.classList.add("RoundNumIntro");
+
     RoundText.textContent = "Round"
     roundNumChanger.textContent = `Num`
+
+    RoundNumContainer.addEventListener('animationend', function handleTheIntro(event){
+        if (event.animationName === 'lineDown') {
+            RoundNumContainer.classList.remove('RoundNumIntro');
+            RoundNumContainer.classList.add("RoundNumFloat");
+            RoundNumContainer.removeEventListener('animationend',handleTheIntro);
+        }
+    })
+
     speechBubble.className = "speechBubble playingSpeechStop";
     mutationObserver.disconnect();
     triggerComputerAnimation("state-winner-reverse")

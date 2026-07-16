@@ -97,7 +97,7 @@ body {
     border-right: 3px solid transparent;
 }
 
-#RoundNum{
+.RoundNum{
     display: flex;
     flex-grow: 0.3;
     align-items: flex-end;
@@ -109,8 +109,28 @@ body {
     gap: 15px;
     font-family: "FE 5 Cent", sans-serif;
     font-size: 50px;
+}
 
+.RoundNumIntro{
+    animation: lineDown 3s steps(7) forwards ;
+}
+
+.RoundNumFloat{
     animation: float 5s  steps(5) infinite;
+}
+
+@keyframes lineDown {
+            0% {
+                transform: translateY(-230px);
+            }
+
+            50% {
+                transform: translateY(-83px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
 }
 
 @keyframes float {
@@ -318,5 +338,5 @@ body {
 
 
 .shakeOff{
-    
+
 }
