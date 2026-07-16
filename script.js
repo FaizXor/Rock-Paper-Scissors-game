@@ -6,13 +6,16 @@ let paperChoice = document.getElementById('PaperButton')
 let computerPlayer = document.querySelector('.ComputerPlayer')
 let blackOverlay = document.getElementById('blackOverlay')
 let speechBubble = document.querySelector('.speechBubble')
-let mainContainer = document.getElementById('mainContainer')
+let mainContainer = document.querySelector('.mainContainer')
 let startPlay = document.querySelector('.startPlay')
 let RoundText = document.querySelector('.Round')
 let roundNumChanger = document.querySelector('.Num')
 let ComputerCard = document.querySelector('#ComputerCardMove')
 
 const bipSound = new Audio('assets/Sounds/Pickup46.wav')
+const crashSound = new Audio('assets/Sounds/Boom24.wav')
+
+crashSound.volume = 0.8 ;
 bipSound.volume = 1;
 let soundInterval = null;
 
@@ -152,12 +155,23 @@ function setUpGame(){
     }
 }
 
+function shakeTheScreen(shakeEnable){
+    mainContainer.className = "mainContainer"
+    void mainContainer.offsetWidth
+    mainContainer.className = `mainContainer ${shakeEnable}`
+    if (shakeEnable !== "shakeOff") {
+            setTimeout(() => {
+                shakeTheScreen("shakeOff");
+            }, 300);
+    }
+}
+
 startPlay.addEventListener('click', () => {
     
     startPlay.style.opacity = "0";
     startPlay.disabled = true;
 
-    triggerSpeechBubble("playingSpeechFive");    
+    triggerSpeechBubble("playingSpeechFive");
     speechBubble.addEventListener('animationend', () => {
 
 
@@ -165,6 +179,10 @@ startPlay.addEventListener('click', () => {
         setTimeout(() => {
             triggerSpeechBubble("playingSpeechSix");
         },1000);
+        setTimeout(() => {
+            crashSound.play();
+            shakeTheScreen("shakeOn");
+        },2400);
     }
 
     else if (speechBubble.classList.contains('playingSpeechSix')) {
