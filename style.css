@@ -23,16 +23,16 @@ body {
 }
 
 .leftScreenCables{
-    margin-left: 21px;
+    opacity: 0;
     padding-top: 6px;
-    padding-left: 12px;
+
 }
 
 .leftScreenScreen{
+    opacity: 0;
     position: fixed;
     left: 0;
-    margin-left: 26px;
-    padding-left: 7px;
+    padding-left: 20px;
 }
 
 .rightScreen{
@@ -44,12 +44,14 @@ body {
     height: auto;
 }
 
-.rightScreenCables{
-    padding-right: 28px;
+.rightScreenCable{
+    opacity: 0;
+    padding-right: 10px;
     padding-bottom: 6px;
 }
 
 .rightScreenScreen{
+    opacity: 0;
     position: fixed;
     right: 0;
     margin-right: 19px;
@@ -385,7 +387,64 @@ body {
   100% { transform: translateX(0) }
 }
 
-
 .shakeOff{
+    
+}
 
+.leftScreenScreenIntro{
+    opacity: 1;
+    transform-origin: left;
+    height: 97px;
+    width: 100%;
+    object-fit: fill;
+    animation: screenIntro 1s steps(5) forwards ;
+}
+
+@keyframes screenIntro {
+    0%{
+        transform: scaleX(0.013);
+    }
+    100%{
+        transform: scaleX(1);
+    }
+}
+
+.leftScreenCablesIntro{
+    opacity: 1;
+    width: 66px;
+    height: 150px;
+    padding-left: 10px;
+    transform-origin: left;
+    animation: cablesIntro 1s steps(2) forwards;
+}
+
+@keyframes cablesIntro {
+    0%{
+        transform: scale(0.1,1)  ;
+    }
+    50%{
+        transform: scale(0.4,1) ;
+    }
+    75%{
+        transform: scaleX(0.84);
+    }
+    100%{
+        transform: scale(0.8,1) ;
+    }
+}
+
+.rightScreenScreenIntro{
+    opacity: 1;
+    width: 70px;
+    height: 97px;
+    transform-origin: right;
+    animation: screenIntro 1s steps(5) forwards;
+}
+
+.rightScreenCableIntro{
+    opacity: 1;
+    width: 57px;
+    height: 148px;
+    transform-origin: right;
+    animation: cablesIntro 1s steps(2) forwards;
 }

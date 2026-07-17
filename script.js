@@ -13,6 +13,11 @@ let RoundNumContainer = document.querySelector('.RoundNum')
 let roundNumChanger = document.querySelector('.Num')
 let ComputerCard = document.querySelector('#ComputerCardMove')
 
+let screenLeftCable = document.querySelector('.leftScreenCables')
+let screenLeftScreen = document.querySelector('.leftScreenScreen')
+let screenRightCable = document.querySelector('.rightScreenCable')
+let screenRightScreen = document.querySelector('.rightScreenScreen')
+
 const bipSound = new Audio('assets/Sounds/Pickup46.wav')
 const crashSound = new Audio('assets/Sounds/Boom24.wav')
 
@@ -165,6 +170,17 @@ function setUpGame(){
     speechBubble.className = "speechBubble playingSpeechStop";
     mutationObserver.disconnect();
     triggerComputerAnimation("state-winner-reverse")
+
+    screenLeftCable.classList.add("leftScreenCablesIntro")
+    screenLeftScreen.classList.add("leftScreenScreenIntro")
+
+    if(screenLeftCable.classList.contains('leftScreenCablesIntro') && screenLeftScreen.classList.contains('leftScreenScreenIntro')){
+        setTimeout(() => {
+            screenRightCable.classList.add("rightScreenCableIntro");
+            screenRightScreen.classList.add("rightScreenScreenIntro")
+        },500);
+    }
+
     if(computerPlayer.classList.contains('state-winner-reverse')){
         setTimeout(() => {
             triggerComputerAnimation("state-think")
